@@ -1,9 +1,9 @@
 import React from 'react'
 
-function gigs() {
+const Gigs=()=>{
   return (
     <div>gigs</div>
   )
 }
 
-export default gigs
+export default Gigs;

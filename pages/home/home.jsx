@@ -1,9 +1,11 @@
 import React from 'react'
-
-function home() {
+import Featured from '../../components/Featured/Featured';
+const Home=()=>{
   return (
-    <div>home</div>
+    <div className='home'>
+      <Featured/>
+    </div>
   )
 }
 
-export default home
+export default Home;

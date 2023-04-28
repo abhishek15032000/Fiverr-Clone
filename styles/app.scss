@@ -9,3 +9,13 @@
 @import './orders';
 @import './register';
 @import './components/navbar';
+@import './components/footer';
+@import './components/featured';
+@import './components/_trustedBy';
+
+// common stles
+.link{
+    // to prevent from getting blue color of the link
+     text-decoration:none;
+     color:inherit; 
+}

@@ -1,9 +1,9 @@
 import React from 'react'
 
-function gig() {
+function Gig() {
   return (
     <div>gig</div>
   )
 }
 
-export default gig
+export default Gig;

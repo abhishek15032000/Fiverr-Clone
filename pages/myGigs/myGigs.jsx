@@ -1,9 +1,9 @@
 import React from 'react'
 
-function myGigs() {
+function Mygigs() {
   return (
-    <div>myGigs</div>
+    <div>Mygigs</div>
   )
 }
 
-export default myGigs
+export default Mygigs;

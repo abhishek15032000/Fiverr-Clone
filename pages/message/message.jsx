@@ -1,9 +1,9 @@
 import React from 'react'
 
-function message() {
+function Message() {
   return (
     <div>message</div>
   )
 }
 
-export default message
+export default Message;
