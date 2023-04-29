@@ -12,7 +12,8 @@
     // when scrolling the navbar sticks to the top , so we add position sticky so that it remains visible even when scrolled.
     position: sticky;
     top:0;
-
+    // to prevent the navbar from being hidden when scrolled.
+    z-index:10;
     &.active{
         background-color: white;
         color:black;
