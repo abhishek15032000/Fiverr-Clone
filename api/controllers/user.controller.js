@@ -36,3 +36,8 @@ export const deleteUser = async (request, response,next) => {
 
 // since for any operation we need to verify this , instead of writing verification logic for everywhere , 
 // middleware we write to make this verification process easier.
+
+export const getUser=async(request,response,next)=>{
+	const user=await User.findById(request.params.id);
+	response.status(200).send(user);
+}

@@ -76,7 +76,7 @@ export const getGigs=async(request,response,next)=>{
 
     try{
         // find all the gigs posted on the platform.
-        const gigs = await Gig.find(filters).sort({ [q.sort]: -1 });
+        const gigs = await Gig.find(filters).sort({ [query.sort]: -1 });
         return response.status(200).send(gigs);
     }catch(error){
        next(error);
