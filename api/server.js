@@ -9,6 +9,7 @@ import gigRoute from './routes/gig.route.js';
 import conversationRoute from './routes/conversation.route.js';
 import authRoute from "./routes/auth.route.js";
 import cookieParser from 'cookie-parser';
+import cors from "cors";
 
 const app = express();
 dotenv.config();
@@ -16,6 +17,8 @@ dotenv.config();
 // using this we can send json data from the client side and we get that data in the request.body =  which will be the json data send by the client.
 app.use(express.json());  // first middleware
 app.use(cookieParser());  // second middleware
+app.use(cors({origin:"http://localhost:5173",credentials:true}));// third middleware   here we are passing the address on which the react app is running , 
+// cors error occurs when server and client are on different ports and access resources , credentials:true means we would be storing cookies on the client's machine , and for accessing those cookies we need to set it to true
 // connect with the database
 mongoose.connect(process.env.MONGO_DB_URL, {
 	useNewUrlParser: true
