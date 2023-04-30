@@ -1,5 +1,6 @@
 import express from 'express';
 import { deleteUser } from '../controllers/user.controller.js';
+import { verifyToken } from '../middleware/jwt.js';
 // create end points using express router
 
 const router=express.Router();
@@ -13,6 +14,8 @@ const router=express.Router();
 //     response.send("it works");
 // });
 
-router.get('/delete/:id',deleteUser);
-
+router.delete('/:id',verifyToken,deleteUser);
+// delete method , we delete a particular user whose id is send inside the url.
 export default router;
+
+// here whenever api is hit , first verify token is done , then deleteUser function is called.
