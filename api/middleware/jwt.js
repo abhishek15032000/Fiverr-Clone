@@ -1,17 +1,20 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
+import createError from '../utils/createError.js';
 
-export const verifyToken=(request,response)=>{
+export const verifyToken=(request,response,next)=>{
     const token=request.cookies.accessToken;
     if(!token){
-        return response.status(401).send("You are not authenticated! ");
+        next(createError(401,"You are not authenticated"));
     }
     const user=User.findById(request.params.id);
     jwt.verify(token,process.env.JWT_SECRET_KEY,(error,payload)=>{
         if(error){
-            return response.status(403).send(" Token is not valid ! ");
+            next(createError(403,"Token is not valid !"));
         }
         request.userId=payload.id;
         request.isSeller=payload.isSeller;
+        next();
+        // next() to move to the next function after verification
     })
 }

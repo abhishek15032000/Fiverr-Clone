@@ -54,6 +54,20 @@ app.use("/api/conversations",conversationRoute);
 app.use("/api/messages",messageRoute);
 app.use("/api/reviews",reviewRoute);
 
+
+/**
+ *  creating our own middleware for handling the error when accessing end points
+ */
+
+function handleError(error,request,response,next){
+	const errorStatus=error.status || 500;
+	const errorMessage=error.message || "Something went wrong";
+
+	return response.status(errorStatus).send(errorMessage);
+}
+
+app.use(handleError);
+
 app.listen(3000, () => {
 	console.log(`backend server is running at port no ${3000}`);
 })

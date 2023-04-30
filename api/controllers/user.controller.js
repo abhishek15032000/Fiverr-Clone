@@ -1,6 +1,6 @@
 import User from '../models/user.model.js';
-
-export const deleteUser = async (request, response) => {
+import createError from '../utils/createError.js';
+export const deleteUser = async (request, response,next) => {
 	// since we are hitting the api /api/user/deleteUser/:id - we can get the id of the user to be deleted using req.params.id and perform this 
 	// but before this we need to be sure that the person who wants to execute this task , has permission to make such a request or not . 
 	// for verification of permission we use jwt token.
@@ -17,7 +17,8 @@ export const deleteUser = async (request, response) => {
 	// or will show the data decrypted inside payload .
 	//  the id is an ObjectId so we convert it into a string then check.
 	if (request.id !== user._id.toString()) {
-		return response.status(403).send("You can only delete your account ");
+		// return response.status(403).send("You can only delete your account ");
+		next(createError(403,"You can only delete your account "));
 	} else {
 		await User.findByIdAndDelete(request.params.id);
 	}
