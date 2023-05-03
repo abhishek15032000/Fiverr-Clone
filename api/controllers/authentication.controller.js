@@ -68,8 +68,8 @@ export const login = async (request, response, next) => {
 	   next(createError(500,"Something went wrong"))
 	}
 }
-export const logout = async (request, response) => {
-   response.clearCookie("accessToken",{
+export const logout = async (request, response,next) => {
+   return response.clearCookie("accessToken",{
      sameSite:"none",
      secure:true
    }).status(200).send("User has been logged out");

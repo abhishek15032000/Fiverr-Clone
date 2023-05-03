@@ -39,5 +39,5 @@ export const deleteUser = async (request, response,next) => {
 
 export const getUser=async(request,response,next)=>{
 	const user=await User.findById(request.params.id);
-	response.status(200).send(user);
+	return response.status(200).send(user);
 }
